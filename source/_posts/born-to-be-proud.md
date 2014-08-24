@@ -1,7 +1,7 @@
 title: 'born to be proud'
 date: 2014-05-21 00:11:56
 tags: 
-- 罗永浩
+- 老罗
 - smartisan
 - T1
 categories: 碎碎碎碎念
