@@ -7,6 +7,7 @@ tags:
 categories: 
 - python
 - 国哥
+
 ---
 >全排列算法一直以来都是我的一个伤痛
 
