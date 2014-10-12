@@ -18,7 +18,7 @@
     <meta property="og:image" content="undefined"/>
   
 
-  <link href="/favicon.png" rel="icon">
+  <link href="/favicon.ico" rel="icon">
   <link rel="alternate" href="/atom.xml" title="Freebase API" type="application/atom+xml">
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -30,7 +30,7 @@
 <body>
   <header id="header" class="inner"><div class="alignleft">
   <h1><a href="/">Freebase API</a></h1>
-  <h2><a href="/">Freebase API in zh-cn</a></h2>
+  <h2><span style="font-size:1.7em;" ><a href="/">Freebase API in ZH-CN</a></span></h2>
 </div>
 <nav id="main-nav" class="alignright">
   <ul>
@@ -42,10 +42,60 @@
   </ul>
   <div class="clearfix"></div>
 </nav>
-<div class="clearfix"></div></header>
+<div class="clearfix"></div>
+</header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
 <h2 class="archive-title">2014/10</h2>
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-10-12T05:53:12.000Z"><a href="/2014/10/12/getting-started/">10月 12 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/10/12/getting-started/">开始学习 Freebase API</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="内容">内容</h2>
+<hr>
+<p>　　<a href="#getting-started">开始</a><br>　　　　<a href="#api-keys">API keys</a><br>　　　　<a href="#limits-quotas">配给和使用限额</a><br>　　　　<a href="#libraries">库</a><br>　　<a href="#api-services">API 服务</a><br>　　<a href="#common-conventions">通用惯例</a><br>　　　　<a href="#api-requests">API 请求</a><br>　　　　<a href="#environments-versions">环境和版本</a><br>　　　　　　<a href="#production-environment">成产环境</a><br>　　　　　　<a href="#sandbox-environment">沙箱</a><br>　　　　<a href="#common-parameters">通用参数</a><br>　　　　　　<a href="#using-callback">使用回调函数</a><br>　　　　<a href="#security">关于安全</a></p>
+<h2 id="开始"><span id="getting-started">开始</span></h2>
+<hr>
+<p><img src="/img/getting-started/Graph-API-Services.png" alt="Graph-API-Services"></p>
+<p>Freebase API是一些列的HTTP API的集合，它提供了对存储在Freebase中的数据的读写方法。不同的API支持不同的场景，从而使得可以通过不同的方法对同样的Freebase数据进行访问。</p>
+<h3 id="API_keys和权限验证"><span id="api-keys">API keys和权限验证</span></h3>
+<p>使用Freebase API 之前，你必须<a href="https://code.google.com/apis/console" target="_blank" rel="external">获得一个API key</a>，也有一些用于调试的无需使用API key的配额。</p>
+<p>一旦你已经有了一个<code>key</code>,你就可以通过使用URL的<code>key</code>参数，将它传给任何一个API：</p>
+<pre><code>http<span class="variable">s:</span>//www.googleapis.<span class="keyword">com</span>/freebase/v1/<span class="built_in">search</span>?query=bob&amp;key=&lt;YOUR_API_KEY&gt;
+</code></pre><p>如果想获得更多关于API keys的帮助，可以参考关于 <a href="https://developers.google.com/console/help/#WhatIsKey" target="_blank" rel="external">Keys, security, and identity 的文档</a>。<br>对于像<a href="http://freebase.lixipeng.me/#malwrite-overview" target="_blank" rel="external">MQL write（未本地化）</a>这样需要额外的认证的API，请参见 <a href="http://freebase.lixipeng.me/#how-tos/authorizing" target="_blank" rel="external">请求的认证（未本地化）</a>。</p>
+<h3 id="配给和使用限额"><span id="limits-quotas">配给和使用限额</span></h3>
+<hr>
+<p>　　　　
+　
+　　　　</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
 
 
   
