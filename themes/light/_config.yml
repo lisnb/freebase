@@ -10,12 +10,13 @@ widgets:
 excerpt_link: Read More
 
 twitter:
+  enable: false
   username:
   show_replies: false
   tweet_count: 5
 
 addthis:
-  enable: true
+  enable: false 
   pubid:
   facebook: true
   twitter: true
@@ -30,6 +31,7 @@ rss:
 comment_provider: facebook
 # Facebook comment
 facebook:
+  enable: false
   appid: 123456789012345
   comment_count: 5
   comment_width: 840
