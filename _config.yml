@@ -3,16 +3,16 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: lisnb's garage
-subtitle: 令人愉悦的忧伤
-description: 菜逼的心路历程
-author: lisnb
-email: lisnb.h@gmail.com
+title: Freebase API 
+subtitle: Freebase API in zh-cn
+description: Freebase 中文文档
+author: lisnb 
+email: lisnb.h@hotmail.com
 language: zh-cn
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://freebase.lixipeng.me
 root: /
 permalink: :year/:month/:day/:title/
 tag_dir: tags
@@ -79,12 +79,12 @@ disqus_shortname:
 # Extensions
 ## Plugins: https://github.com/hexojs/hexo/wiki/Plugins
 ## Themes: https://github.com/hexojs/hexo/wiki/Themes
-theme: pacman 
+theme: light 
 exclude_generator:
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: github
-  repository: https://gitcafe.com/lisnb/lisnb.git
-  branch: gitcafe-pages
+  repo: https://github.com/lisnb/freebase.git
+  branch: gh-pages
