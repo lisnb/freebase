@@ -72,9 +72,14 @@
 <p>使用Freebase API 之前，你必须<a href="https://code.google.com/apis/console" target="_blank" rel="external">获得一个API key</a>，也有一些用于调试的无需使用API key的配额。</p>
 <p>一旦你已经有了一个<code>key</code>,你就可以通过使用URL的<code>key</code>参数，将它传给任何一个API：</p>
 <pre><code>http<span class="variable">s:</span>//www.googleapis.<span class="keyword">com</span>/freebase/v1/<span class="built_in">search</span>?query=bob&amp;key=&lt;YOUR_API_KEY&gt;
-</code></pre><p>如果想获得更多关于API keys的帮助，可以参考关于 <a href="https://developers.google.com/console/help/#WhatIsKey" target="_blank" rel="external">Keys, security, and identity 的文档</a>。<br>对于像<a href="http://freebase.lixipeng.me/#malwrite-overview" target="_blank" rel="external">MQL write（未本地化）</a>这样需要额外的认证的API，请参见 <a href="http://freebase.lixipeng.me/#how-tos/authorizing" target="_blank" rel="external">请求的认证（未本地化）</a>。</p>
+</code></pre><p>如果想获得更多关于API keys的帮助，可以参考关于 <a href="https://developers.google.com/console/help/#WhatIsKey" target="_blank" rel="external">Keys, security, and identity 的文档</a>。<br>对于像<a href="#mqlwrite-overview">MQL write（未本地化）</a>这样需要额外的认证的API，请参见 <a href="#how-tos/authorizing">请求的认证（未本地化）</a>。</p>
 <h3 id="配给和使用限额"><span id="limits-quotas">配给和使用限额</span></h3>
-<hr>
+<p>在<a href="http://freebase.lixipeng.me/#usage-limits" target="_blank" rel="external">使用限制</a>中可以找到更详细的信息。<br>Freebase 允许一个用户在一天中，调用<code>100k</code>次读取数据的API（每24小时重新计算），调用<code>10k</code>次<a href="#usage-limits-write-quoto">写数据</a>的API.<br>如果你觉得对于你来说，100k次都不足以满足你的需求，那你可能需要考虑一下Freebase的<a href="https://developers.google.com/freebase/data" target="_blank" rel="external">数据集</a>了，这样，你就能在本地访问Freebase了。<br>当然，你也可以在APIs Console(APIs 控制台)处，申请更高的额度。方法是到<a href="https://code.google.com/apis/console" target="_blank" rel="external">APIs Console</a>，然后点击“Quotas”，再点击“Request more… ”，从而获得更多对Freebase API的调用额度。</p>
+<blockquote>
+<p><strong>鹏宝说</strong>：实际上操作起来要比这个复杂一点。首先这个网址经过了几次重定向，到达<a href="https://console.developers.google.com/project?authuser=0" target="_blank" rel="external">这里</a>，然后你需要选择一个你的应用，点击进入，然后再左侧的“APIs&amp;auth”中选择“APIs”，就能看到“Enabled APIs”中有“Freebase”这项，后面还有额度和已经使用了多少以及是否开启这个API的选项。鼠标悬停在那个标示用量的进度条上，在弹出的tip中，有“Request more”的链接，点进去是一个申请的页面，需要填写一些信息，比如你的应用的描述等等。<br><img src="/img/getting-started/Request-more.png" alt="request more"></p>
+</blockquote>
+<h3 id="库"><span id="libraries">库</span></h3>
+<p>与此同时，新设计的Freebase API使得您可以使其同<a href="https://developers.google.com/freebase/v1/libraries" target="_blank" rel="external">Google API Client Libraries</a>协作</p>
 <p>　　　　
 　
 　　　　</p>
