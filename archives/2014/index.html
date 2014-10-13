@@ -79,12 +79,99 @@
 <pre><code>http<span class="variable">s:</span>//www.googleapis.<span class="keyword">com</span>/freebase/v1/<span class="built_in">search</span>?query=bob&amp;key=&lt;YOUR_API_KEY&gt;
 </code></pre><p>如果想获得更多关于API keys的帮助，可以参考关于 <a href="https://developers.google.com/console/help/#WhatIsKey" target="_blank" rel="external">Keys, security, and identity 的文档</a>。<br>对于像<a href="#mqlwrite-overview">MQL write（未本地化）</a>这样需要额外的认证的API，请参见 <a href="#how-tos/authorizing">请求的认证（未本地化）</a>。</p>
 <h3 id="配给和使用限额"><span id="limits-quotas">配给和使用限额</span></h3>
-<p>在<a href="http://freebase.lixipeng.me/#usage-limits" target="_blank" rel="external">使用限制</a>中可以找到更详细的信息。<br>Freebase 允许一个用户在一天中，调用<code>100k</code>次读取数据的API（每24小时重新计算），调用<code>10k</code>次<a href="#usage-limits-write-quoto">写数据</a>的API.<br>如果你觉得对于你来说，100k次都不足以满足你的需求，那你可能需要考虑一下Freebase的<a href="https://developers.google.com/freebase/data" target="_blank" rel="external">数据集</a>了，这样，你就能在本地访问Freebase了。<br>当然，你也可以在APIs Console(APIs 控制台)处，申请更高的额度。方法是到<a href="https://code.google.com/apis/console" target="_blank" rel="external">APIs Console</a>，然后点击“Quotas”，再点击“Request more… ”，从而获得更多对Freebase API的调用额度。</p>
+<p>在<a href="http://freebase.lixipeng.me/#usage-limits" target="_blank" rel="external">使用限制</a>中可以找到更详细的信息。<br>Freebase 允许一个用户在一天中，调用<code>100k</code>次读取数据的API（每24小时重新计算），调用<code>10k</code>次<a href="#usage-limits-write-quoto">写数据</a>的API.<br>如果你觉得对于你来说，100k次都不足以满足你的需求，那你可能需要考虑一下Freebase的<a href="https://developers.google.com/freebase/data" target="_blank" rel="external">本地数据集</a>了，这样，你就能在本地访问Freebase了。<br>当然，你也可以在APIs Console(APIs 控制台)处，申请更高的额度。方法是到<a href="https://code.google.com/apis/console" target="_blank" rel="external">APIs Console</a>，然后点击“Quotas”，再点击“Request more… ”，从而获得更多对Freebase API的调用额度。</p>
 <blockquote>
 <p><strong>鹏宝说</strong>：实际上操作起来要比这个复杂一点。首先这个网址经过了几次重定向，到达<a href="https://console.developers.google.com/project?authuser=0" target="_blank" rel="external">这里</a>，然后你需要选择一个你的应用，点击进入，然后再左侧的“APIs&amp;auth”中选择“APIs”，就能看到“Enabled APIs”中有“Freebase”这项，后面还有额度和已经使用了多少以及是否开启这个API的选项。鼠标悬停在那个标示用量的进度条上，在弹出的tip中，有“Request more”的链接，点进去是一个申请的页面，需要填写一些信息，比如你的应用的描述等等。<br><img src="/img/getting-started/Request-more.png" alt="request more"></p>
 </blockquote>
 <h3 id="库"><span id="libraries">库</span></h3>
 <p>与此同时，新设计的Freebase API使得您可以使其同<a href="https://developers.google.com/freebase/v1/libraries" target="_blank" rel="external">Google API Client Libraries</a>协作</p>
+<h2 id="API_服务"><span id="api-services">API 服务</span></h2>
+<hr>
+<p>Freebase API的设计使得开发者可以在Freebase中查询关键词，结构化数据，文本数据和图像数据。</p>
+<p><a href="#search-overview"><strong>Search API</strong></a><br>　　通过给定的关键词和其他约束，查找实体<br><a href="#topic-overview"><strong>Topic API</strong></a>　<br>　　获得关于一个给定实体的综述信息（summary）<br><a href="#mql-overview"><strong>MQL Read/Write APIs</strong></a><br>　　检索或者写入一个实体或者一个实体集合的详细的结构化数据<br><a href="#suggest"><strong>Freebase Suggest Widget</strong></a><br>　　在网页上使用这个JQuery部件以选择实体<br>　　<br>Search API 根据给定的任意的文本查询给出Freebase中的相关数据。<code>查询(search)</code>服务不仅会在Freebase中索引给定的实体的数据，同样也会在其他的数据源中进行索引，比如维基百科的数据。</p>
+<p>Topic API 是一个能够根据给定的主题，返回相关的包括图像和文字在内的所有已知信息的网络服务。</p>
+<p>MQL Read/Write API 使得开发者能够使用 <a href="http://mql.freebaseapps.com/" target="_blank" rel="external">MetaWeb Query Language</a> 在 Freebase中进行结构化的查询。如果你像要获得Freebase中存储的图的数据，或者想要查找一些关于“<em>directors of French comedies</em>” 或者 “<em>mountains in California</em>”的信息，那么你就应该使用这个服务。</p>
+<p>另外，如果你愿意，你也可以使用 Freebase Suggest Widget 在你的网页上添加可以查找实体的可视化控件。</p>
+<h2 id="通用惯例"><span id="common-conventions">通用惯例</span></h2>
+<hr>
+<h3 id="API_请求"><span id="api-requests">API 请求</span></h3>
+<p>调用API的URI格式是这样的：</p>
+<pre><code>GET https://www.googleapis.com/freebase/<span class="tag">&lt;<span class="title">version</span>&gt;</span>/<span class="tag">&lt;<span class="title">apiname</span>&gt;</span> <span class="tag">&lt;<span class="title">path</span>&gt;</span>? <span class="tag">&lt;<span class="title">urlparams</span>&gt;</span> 
+</code></pre><p>所有的请求都必须使用<code>HTTPS</code>协议。</p>
+<ul>
+<li><code>version</code>版本，参数的取值只能是<code>v1</code>（代表生产环境）和<code>v1sandbox</code>（代表沙箱环境）中的一个。（关于生产环境和沙箱环境的更多信息，可以参考<a href="#environments-versions">环境和版本</a>。）</li>
+<li><code>apiname</code>参数是用来指定调用的API，比如<code>topic</code>和<code>mqlread</code></li>
+<li><code>path</code>和<code>urlparams</code>是由调用的API来决定的</li>
+</ul>
+<h3 id="环境和版本"><span id="environments-versions">环境和版本</span></h3>
+<p>Freebase提供了两种不同的数据环境。（你也可以认为是两个不同的数据库。）</p>
+<h4 id="生产环境"><span id="production-environment">生产环境<span></span></span></h4>
+<p>Freebase的成产环境意味着它将在正式的产品应用中被使用。这就对生产环境有以下的要求：</p>
+<ul>
+<li>必须稳定。因为API调用是在其基础上运行的。</li>
+<li>数据质量要高。只有QAed和最终的数据才能被添加进来。</li>
+</ul>
+<p>在你的应用中使用生产环境的Freebase服务：</p>
+<pre><code>GET http<span class="variable">s:</span>//www.googleapis.<span class="keyword">com</span>/freebase/v1/<span class="built_in">search</span>?query=bob
+</code></pre><h4 id="沙箱"><span id="sandbox-environment">沙箱<span></span></span></h4>
+<p>为了提供一个实验和测试的环境和数据，我们采用了沙箱机制。<br>开发者可以使用沙箱做以下事情：</p>
+<ul>
+<li>针对这个环境开发您的应用</li>
+<li>在这个环境下实验心地数据和模式</li>
+</ul>
+<p>每个月的第一个周一，沙箱依据生产环境处更新，所以，你可以尽情的使用这个环境和其中的数据进行实验，但需要牢记的是，您的数据会被定期清除。</p>
+<pre><code>GET http<span class="variable">s:</span>//www.googleapis.<span class="keyword">com</span>/freebase/v1sandbox/<span class="built_in">search</span>?query=bob
+</code></pre><p>注：当需要选择沙箱环境的时候，Freebase将环境和版本的表示结合到一起，成为URI的一个参数。就是说，沙箱环境的版本参数取值为<code>v1sandbox</code>，而生产环境的参数取值为<code>v1</code>。</p>
+<h3 id="通用参数"><span id="common-parameters">通用参数</span></h3>
+<p>像其他的Google APIs一样，Freebase支持很多标准的参数（包括下面会提到的<code>callback</code>参数），如果想获得更多细节，请参考<a href="#v1-parameters">Freebase Standard Parameters</a>。</p>
+<h4 id="使用回调函数"><span id="using-callback">使用回调函数</span></h4>
+<p>URL中的<code>callback</code>参数使得返回JSON格式的数据成为指定的该函数的参数，这样就可以支持<a href="http://en.wikipedia.org/wiki/JSONP" target="_blank" rel="external">JSONP</a>，这种设计使得当你希望在网页上直接嵌入Freebase的返回数据时可以做跨域访问。当然，这个参数只能应用于读取JSON的API中。</p>
+<p>例如：</p>
+<pre><code>GET http<span class="variable">s:</span>//www.googleapis.<span class="keyword">com</span>/freebase/v1/<span class="built_in">search</span>?query=bob&amp;callback=funcname
+</code></pre><p>当请求结束后，你代码中的回调函数就能够执行，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myfuncname</span><span class="params">(result)</span> </span>{</div><div class="line">    alert(result[‘name’]);</div><div class="line">}</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
+
+<h3 id="关于安全"><span id="security">关于安全</span></h3>
+<div style="background:#eb7a77;color:white;"><br><strong>Freebase中的所有内容都是由用户生成的。</strong>当你想要在你的应用中使用Freebase APIs的时候，请确定你完全了解这其中包含的安全性问题。<br><br></div>
+
+<p>正因为Freebase中的所有内容都是用户生成的，所以你不能未经处理就将这些内容显示在网页上。<code>处理（Cleaning-up）</code>是一个比较模糊的概念，所以这里总结了几种不同的解决这个问题的机制：</p>
+<ul>
+<li><strong>Sanitization</strong> 去除一些存在潜在威胁的HTML的标签。比如：将<code>&lt;p&gt;&lt;script&gt;alsert(1)&lt;/script&gt;&lt;/p&gt;</code>处理为<code>&lt;p&gt;&lt;/p&gt;</code></li>
+<li><strong>Stripping</strong> 直接去除所有的HTML标签。比如：将<code>&lt;p&gt;&lt;script&gt;alsert(1)&lt;/script&gt;&lt;/p&gt;</code>处理为空字符串</li>
+<li><strong>Unicode Encoding</strong> 对于一些特定的字符，比如<code>&lt;</code>,<code>&gt;</code>和<code>&amp;</code>等，使用它们的Unicode编码来表示它们：<code>\u003c</code>,<code>\u003e</code>,<code>\u0026</code>。所有的JSON解析器都能自动的将它们重新转义回来</li>
+<li><strong>HTML-escaping</strong> 将特定的HTML字符替换为HTML实体。比如<code>&lt;</code>,<code>&gt;</code>会被替换成为<code>&amp;lt;</code>,<code>&amp;gt;</code></li>
+</ul>
+<p>在默认情况下，所有的JSON APIs的输出都使用Unicode编码，每个Freebase API都有一个可以用来执行是否开启采用这个安全机制的参数。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">API Name</th>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="#search">Search API</a></td>
+<td style="text-align:left"><code>encode</code></td>
+<td style="text-align:left">字符串型参数。可选值为html和off,默认为off。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="#topic">Topic API</a></td>
+<td style="text-align:left"><code>N/A</code></td>
+<td style="text-align:left">(没有可用的编码支持)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="#mqlread">MQL Read API</a></td>
+<td style="text-align:left"><code>html_encode</code></td>
+<td style="text-align:left">布尔型参数。默认是 TRUE。</td>
+</tr>
+</tbody>
+</table>
+<p>关于每个API所支持的所有参数的介绍，可以参考文档<a href="https://developers.google.com/freebase/v1/" target="_blank" rel="external">Freebase API Reference</a>。</p>
+<hr>
+<p>本文所有内容均翻译自<a href="https://developers.google.com/freebase/v1/getting-started" target="_blank" rel="external">Google Freebase API 官方文档</a><br>同原文档相同，本文也使用<a href="http://creativecommons.org/licenses/by/3.0/" target="_blank" rel="external">知识共享署名3.0许可</a><br>如有疑问或者交流，欢迎发送邮件至<code>lisnb.h@hotmail.com</code>联系作者~ </p>
+<p>　　</p>
 <p>　　　　
 　
 　　　　</p>
