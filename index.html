@@ -52,6 +52,72 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2014-10-14T06:18:08.000Z"><a href="/2014/10/14/basic_concepts/">10月 14 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/10/14/basic_concepts/">一些基本概念</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>对于那些刚刚开始接触Freebase的开发者，这部分内容涵盖了理解Freebase如何运作所需的基本技术和概念。</p>
+<h2 id="图（graphs）"><span id="graphs">图（graphs）</span></h2>
+<hr>
+<p>Freebase中的数据存储在一种叫做<a href="http://en.wikipedia.org/w/index.php?title=Graph_\(abstract_data_type\" target="_blank" rel="external">图（graph）</a>)的数据结构中。图是由节点和连接这些节点的边共同构成。在Freebase中，使用/type/object来定义节点，使用/type/link来定义边。使用这种方式来存储数据使得Freebase能够快速的随机访问主题之间的关联，并且能够简便的添加新的数据模式而不对已有的数据结构进行更改。</p>
+<h2 id="主题（topics）"><span id="topics">主题（topics）</span></h2>
+<hr>
+<p>在Freebase中，像人物(people)，地点(place)和事物(thing)这些现实生活中的实体有三千九百万个。因为Freebase使用图来表示的，这些主题和图中的节点相关联。然而并不是每个节点都是一个主题。在<a href="#cvts">CVTs</a>这个部分你可以找到一些不是主题的节点的例子。</p>
+<p>下面是一些关于Freebase中主题类型的例子：</p>
+<ul>
+<li>物理实体，如：Bob Dylan, the Louvre Museum, the Saturn planet 等</li>
+<li>艺术/多媒体作品，如：The Dark Knight(电影), Hotel California(歌曲)等</li>
+<li>类别，如：noble gas, Chordate 等</li>
+<li>抽象概念，如：love 等</li>
+<li>思想流派或者艺术流派，如：Impressionism.</li>
+</ul>
+<p>有些主题因为蕴含非常多的数据（例如：Wal-Mart）显得非常的重要，也有一些主题因为连接了很多其他领域内的主题而显得重要。比如，像love, poverty, chivalry等等这些抽象概念，虽然本身并不包含什么属性，但因为它们通常表现为书籍，诗歌和电影等，所以也显得非常重要。</p>
+<h2 id="类型和属性"><span id="types-properties">类型和属性</span></h2>
+<hr>
+<p>无论哪个主题，都可以从多个不同的角度来解读，比如：</p>
+<ul>
+<li>Bob Dylan 是一个作家，歌手，演员，书作者，电影导演；</li>
+<li>Leonardo da Vinci 是一个画家，雕塑家，解剖学家，建筑师，工程师；</li>
+<li>Love 是书籍的主题，电影主题，诗歌的主题，演出的主题；</li>
+<li>任意一个城市都是一个地理位置，也可能是一个游客的目的地或者是一个公务员的雇佣者等等</li>
+</ul>
+<p>为了更好的表示很多主题的这种多重意义，Freebase中引入了<em>类别(types)</em>的概念。在Freebase中，每个主题可以有个类别信息。Bob Dylan这个主题被赋予以下的类别：作曲家，词作者，音乐家（歌手），书作者，等等。每个类别都会有一些列的跟这个类别密切相关的<em>属性(properties)</em>。如：</p>
+<ul>
+<li>音乐艺术家这个类别包括一个包含Bob Dylan创作的所有专辑的列表和已知的他会使用的乐器列表</li>
+<li>书作者这个类别包括一个包含Bob Dylan写的所有书的列表和他的写作和思想的流派</li>
+<li>公司这个类别包括一个包含这个公司所有创建者、董事会成员、母公司、分公司、雇员、产品、年营业额和利润记录的列表等</li>
+</ul>
+<p>综上，有一些比较普遍的属性，能够描述一个类别特定方面的信息，而类别就是盛放这些属性的一个概念上的容器。（你可以把类别想象成关系数据库中的表，每个类别的表都有一个指向能唯一定义主题的表的外键。）</p>
+<h2 id="域和ID"><span id="domains-ids">域和ID</span></h2>
+<hr>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2014-10-12T05:53:12.000Z"><a href="/2014/10/12/getting-started/">10月 12 2014</a></time>
       
       
