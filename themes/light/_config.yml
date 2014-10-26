@@ -3,7 +3,7 @@ menu:
   Archives: /archives
 
 widgets:
-- search
+#- search
 - category
 - tag
 
