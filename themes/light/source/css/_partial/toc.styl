@@ -1,0 +1,37 @@
+//toc
+
+#toc
+	line-height 1em
+	font-size 0.8em
+	float left 
+	.toc
+		padding 0
+		li
+			list-style-type none
+	.toc-child
+		padding-left 1.5em
+
+#toc.toc-aside
+	width 20%
+	position fixed
+	left 4%
+	top 180px
+	overflow hidden
+	line-height 1.5em
+	font-size 1.2em
+	color color-heading
+	opacity .8
+	transition opacity 1s ease-out
+	strong
+		padding 0.3em 0
+		color color-font
+	&:hover
+		transition opacity .3s ease-out
+		opacity 1
+	a
+		transition color 1s ease-out
+		&:hover
+			color color-theme
+			transition color .3s ease-out
+.active
+	color color-theme !important

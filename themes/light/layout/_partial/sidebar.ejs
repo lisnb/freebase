@@ -2,6 +2,8 @@
   <%- partial('../_widget/' + widget) %>
 <% }); %>
 <% if(page && page.content) { %>
+<div id="toc" class="toc-aside">
   <%- toc(page.content) %>
+</div>
 <% } %>
 
